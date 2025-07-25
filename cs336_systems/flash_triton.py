@@ -614,6 +614,8 @@ class FlashAttentionTritonFunction(torch.autograd.Function):
         stride_dob, stride_doq, stride_dod = dO.stride()
         stride_db, stride_dq = D.stride()
         
+        # grid_preprocess = (num_query_tiles, batch_size) 定义了kernel的并行执行网格
+        # 每个tile对应一个线程块,总共有num_query_tiles * batch_size个线程块并行执行
         flash_bwd_preprocess_kernel[grid_preprocess](
             O, dO, D,
             stride_ob, stride_oq, stride_od,

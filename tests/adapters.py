@@ -15,7 +15,7 @@ def get_flashattention_autograd_function_pytorch() -> Type:
     Returns:
         A class object (not an instance of the class)
     """
-    from cs336_systems.flash_pytorch import FlashAttentionFunction
+    from cs336_systems.flash_pytorch_algorithm1 import FlashAttentionFunction
     return FlashAttentionFunction
 
 
